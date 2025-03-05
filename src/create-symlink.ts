@@ -28,16 +28,18 @@ export default async function main() {
 	}
 }
 
-
 async function suggestAvailableName(directoryPath: string, idealName: string, extension: string) {
 	let suffix = 0;
 
 	while (suffix < 1000) {
 		const newName = idealName + (suffix === 0 ? "" : ` ${suffix}`) + extension;
-		
+
 		const newPath = `${directoryPath}/${newName}`;
 
-		const exists = await fs.stat(newPath).then(() => true).catch(() => false);
+		const exists = await fs
+			.stat(newPath)
+			.then(() => true)
+			.catch(() => false);
 		if (!exists) return newName;
 
 		suffix++;

@@ -1,4 +1,4 @@
-import { showHUD, getSelectedFinderItems } from "@raycast/api";
+import { showHUD, getSelectedFinderItems, Toast, showToast } from "@raycast/api";
 import fs from "fs/promises";
 import * as path from "path";
 
@@ -6,12 +6,18 @@ export default async function main() {
 	const files = await getSelectedFinderItems().catch(() => undefined);
 
 	if (!files) {
-		await showHUD("Finder is not the front most application.");
+		await showToast({
+			title: "Finder is not the front most application.",
+			style: Toast.Style.Failure,
+		});
 		return;
 	}
 
 	if (!files.length) {
-		await showHUD("No files selected.");
+		await showToast({
+			title: "No files selected.",
+			style: Toast.Style.Failure,
+		});
 		return;
 	}
 

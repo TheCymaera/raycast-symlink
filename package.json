@@ -6,6 +6,7 @@
 	"icon": "extension-icon.png",
 	"author": "cymaera",
 	"owner": "heledron",
+	"access": "public",
 	"categories": [
 		"Developer Tools",
 		"System"
